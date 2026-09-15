@@ -29,6 +29,56 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
 
+      - name: Crop bottom of SVG
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+
+          for file in [
+              "dist/github-snake.svg",
+              "dist/github-snake-dark.svg",
+          ]:
+              path = Path(file)
+              svg = path.read_text()
+
+              match = re.search(
+                  r'<svg([^>]*?)viewBox="([^"]+)"([^>]*)>',
+                  svg
+              )
+
+              if not match:
+                  print(f"Could not find viewBox in {file}")
+                  continue
+
+              viewbox = match.group(2).split()
+
+              if len(viewbox) != 4:
+                  print(f"Unexpected viewBox in {file}: {match.group(2)}")
+                  continue
+
+              x, y, width, height = map(float, viewbox)
+
+              # Remove the bottom section containing the horizontal bar.
+              # Keep the contribution grid and snake completely visible.
+              crop_height = 135
+
+              new_viewbox = f"{x:g} {y:g} {width:g} {crop_height:g}"
+
+              svg = svg.replace(
+                  f'viewBox="{match.group(2)}"',
+                  f'viewBox="{new_viewbox}"',
+                  1
+              )
+
+              path.write_text(svg)
+
+              print(f"Cropped {file}:")
+              print(f"  Original height: {height}")
+              print(f"  New height:      {crop_height}")
+
+          PY
+
       - name: Configure git
         run: |
           git config --global user.name "GitHub Actions"
