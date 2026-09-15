@@ -29,7 +29,7 @@ jobs:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-snake.svg?color_snake=#5FD3A5&color_dots=#F5F3FF,#DDD6FE,#C4B5FD,#A78BFA,#8B5CF6
-            dist/github-snake-dark.svg?color_snake=#C084FC&color_dots=#161B22,#3B3154,#59477A,#8066B5,#A98BE8
+            dist/github-snake-dark.svg?color_snake=#C084FC&color_dots=#071A12,#0D3B28,#12804D,#22C77A,#5CFFA8
 
       - name: Configure git
         run: |
