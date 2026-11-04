@@ -1,5 +1,6 @@
 # 💫 About Me:
 <br>I'm an Information Technology engineering student who thrives on bridging the gap between cutting-edge AI/ML architectures and scalable full-stack applications. My expertise centers on building intelligent, robust systems—from engineering offline RAG pipelines and autonomous matching agents to developing privacy-first Web3 protocols
+<img src="koi/koi.gif" width="256" alt="My koi" />
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/https://www.linkedin.com/in/harshad-saha-9254ba380/) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:harshadsaha07@gmail.com) 
 
